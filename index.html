@@ -11,16 +11,144 @@
     <link rel="icon" type="image/png" href="./assets/intro_combine2.png" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="./assets/katex/katex-D96Be8fu.css" />
+    <style>
+      .article-nav {
+        position: fixed;
+        top: 220px;
+        left: max(24px, calc(50vw - 660px));
+        z-index: 5;
+        display: grid;
+        width: 148px;
+        gap: 4px;
+      }
+
+      .article-nav-link {
+        position: relative;
+        display: block;
+        padding: 8px 0 8px 16px;
+        color: #8b8d98;
+        font-size: 15px;
+        font-weight: 520;
+        letter-spacing: 0;
+        line-height: 21px;
+        transition: color 0.18s ease;
+      }
+
+      .article-nav-link::before {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 3px;
+        height: 18px;
+        border-radius: 999px;
+        background: transparent;
+        content: "";
+        transform: translateY(-50%);
+        transition: background 0.18s ease;
+      }
+
+      .article-nav-link:hover,
+      .article-nav-link.is-active {
+        color: #1e1f24;
+      }
+
+      .article-nav-link.is-active::before {
+        background: #3c56f4;
+      }
+
+      @media (max-width: 1180px) {
+        .article-nav {
+          display: none;
+        }
+      }
+
+      .site-footer {
+        width: 100%;
+        margin: 0;
+        padding: 32px max(24px, calc(50vw - 800px + 120px)) 44px;
+        border-top: 1px solid #d8d9e0;
+      }
+
+      .site-footer-inner {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 32px;
+      }
+
+      .footer-copy {
+        display: grid;
+        min-width: 0;
+        gap: 4px;
+      }
+
+      .footer-copyright {
+        color: #62636c;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 22px;
+      }
+
+      .footer-org {
+        color: #8b8d98;
+        font-size: 13px;
+        line-height: 20px;
+      }
+
+      .footer-links {
+        display: flex;
+        max-width: 560px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 10px 18px;
+      }
+
+      .footer-link {
+        color: #62636c;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+      }
+
+      .footer-link:hover {
+        color: #3c56f4;
+      }
+
+      .footer-contact {
+        display: inline-flex;
+        gap: 6px;
+      }
+
+      @media (max-width: 640px) {
+        .site-footer {
+          padding: 28px 16px 36px;
+        }
+
+        .site-footer-inner {
+          display: grid;
+          gap: 18px;
+        }
+
+        .footer-links {
+          justify-content: flex-start;
+          gap: 10px 16px;
+        }
+
+        .footer-contact {
+          width: 100%;
+        }
+      }
+    </style>
   </head>
   <body>
     <header class="topbar" aria-label="Site header">
-      <a class="brand" href="./" aria-label="AMix-2 home">
+      <div class="brand" aria-label="Shanghai Artificial Intelligence Laboratory">
         <img
           class="brand-logo"
           src="./assets/sail-logo.svg"
           alt="Shanghai Artificial Intelligence Laboratory"
         />
-      </a>
+      </div>
 
       <div class="locale-switch" aria-label="Language switch">
         <button class="locale-button is-active" type="button" data-lang="zh">中文</button>
@@ -29,18 +157,28 @@
     </header>
 
     <main class="page">
+      <nav class="article-nav" aria-label="Article sections">
+        <a class="article-nav-link" href="#context" data-nav-target="context" data-i18n="navContext"></a>
+        <a class="article-nav-link" href="#overview" data-nav-target="overview" data-i18n="navOverview"></a>
+        <a class="article-nav-link" href="#paradigm" data-nav-target="paradigm" data-i18n="navParadigm"></a>
+        <a class="article-nav-link" href="#method" data-nav-target="method" data-i18n="navMethod"></a>
+        <a class="article-nav-link" href="#evaluation" data-nav-target="evaluation" data-i18n="navEvaluation"></a>
+        <a class="article-nav-link" href="#conclusion" data-nav-target="conclusion" data-i18n="navConclusion"></a>
+      </nav>
+
       <section class="article-hero" aria-labelledby="page-title">
         <p class="publish-date" data-i18n="date"></p>
         <div class="hero-title-lockup">
           <h1 id="page-title" class="brand-title" aria-label="AMix-2">
             <img
-              class="title-a-mark"
-              src="./assets/intro_combine2.jpeg"
+              class="brand-title-image"
+              src="./assets/amix-title-lockup.png"
               alt=""
               aria-hidden="true"
+              width="380"
+              height="112"
               decoding="async"
             />
-            <span data-i18n="titleRest"></span>
           </h1>
         </div>
         <p class="hero-summary" data-i18n="summary">
@@ -68,12 +206,12 @@
         </div>
       </section>
 
-      <section class="background-lead" aria-label="AMix-2 background">
+      <section id="context" class="background-lead" aria-label="AMix-2 background">
         <p data-i18n-html="backgroundLead"></p>
       </section>
 
       <article class="content">
-        <section class="content-section" aria-labelledby="overview-title">
+        <section id="overview" class="content-section" aria-labelledby="overview-title">
           <h2 id="overview-title" data-i18n="overviewTitle">概述</h2>
           <p data-i18n-html="overviewOne"></p>
           <p data-i18n="overviewTwo"></p>
@@ -93,7 +231,7 @@
           </figcaption>
         </figure>
 
-        <section class="content-section" aria-labelledby="paradigm-title">
+        <section id="paradigm" class="content-section" aria-labelledby="paradigm-title">
           <h2 id="paradigm-title" data-i18n="paradigmTitle"></h2>
           <p data-i18n="paradigmIntro"></p>
 
@@ -111,7 +249,7 @@
           </ul>
         </section>
 
-        <section class="content-section" aria-labelledby="method-title">
+        <section id="method" class="content-section" aria-labelledby="method-title">
           <h2 id="method-title" data-i18n="methodTitle"></h2>
           <p data-i18n-html="methodIntro"></p>
 
@@ -153,7 +291,7 @@
           </figure>
         </section>
 
-        <section class="content-section" aria-labelledby="results-title">
+        <section id="evaluation" class="content-section" aria-labelledby="results-title">
           <h2 id="results-title" data-i18n="resultsTitle"></h2>
           <p data-i18n-html="resultsText"></p>
           <p data-i18n-html="resultsMore"></p>
@@ -174,14 +312,101 @@
           </figcaption>
         </figure>
 
-        <section class="content-section" aria-labelledby="takeaway-title">
+        <section id="conclusion" class="content-section" aria-labelledby="takeaway-title">
           <h2 id="takeaway-title" data-i18n="takeawayTitle"></h2>
           <p data-i18n="takeawayText"></p>
         </section>
       </article>
     </main>
 
+    <footer class="site-footer" aria-label="Site footer">
+      <div class="site-footer-inner">
+        <div class="footer-copy">
+          <span class="footer-copyright" data-i18n="footerCopyright">
+            © 2026 上海人工智能实验室 版权所有。
+          </span>
+        </div>
+        <nav class="footer-links" aria-label="Footer links">
+          <a class="footer-link footer-contact" href="mailto:zhouhao@pjlab.org.cn">
+            <span data-i18n="footerContact">联系</span>
+            <span>zhouhao@pjlab.org.cn</span>
+          </a>
+          <a
+            class="footer-link"
+            href="https://github.com/AMix-Bio/AMix-2"
+            target="_blank"
+            rel="noreferrer"
+            data-i18n="footerGithub"
+            >GitHub</a
+          >
+          <a
+            class="footer-link"
+            href="./assets/AMix2-techreport.pdf"
+            target="_blank"
+            rel="noreferrer"
+            data-i18n="footerReport"
+            >技术报告</a
+          >
+          <a class="footer-link" href="#page-title" data-i18n="footerTop">回到顶部</a>
+        </nav>
+      </div>
+    </footer>
+
     <script src="./script.js"></script>
+    <script>
+      (() => {
+        const navLinks = Array.from(document.querySelectorAll("[data-nav-target]"));
+        const navSections = navLinks
+          .map((link) => document.getElementById(link.dataset.navTarget))
+          .filter(Boolean);
+
+        function setActiveNav(sectionId) {
+          navLinks.forEach((link) => {
+            const active = link.dataset.navTarget === sectionId;
+            link.classList.toggle("is-active", active);
+            if (active) {
+              link.setAttribute("aria-current", "true");
+            } else {
+              link.removeAttribute("aria-current");
+            }
+          });
+        }
+
+        function updateActiveNav() {
+          if (!navSections.length) return;
+
+          const page = document.documentElement;
+          const distanceFromBottom = page.scrollHeight - (window.scrollY + window.innerHeight);
+          const finalSection = navSections[navSections.length - 1];
+
+          if (
+            distanceFromBottom <= 180 ||
+            finalSection.getBoundingClientRect().top <= window.innerHeight * 0.7
+          ) {
+            setActiveNav(finalSection.id);
+            return;
+          }
+
+          const readingLine = window.innerHeight * 0.38;
+          let activeSection = navSections[0];
+
+          navSections.forEach((section) => {
+            if (section.getBoundingClientRect().top <= readingLine) {
+              activeSection = section;
+            }
+          });
+
+          setActiveNav(activeSection.id);
+        }
+
+        window.addEventListener("scroll", updateActiveNav, { passive: true });
+        window.addEventListener("resize", updateActiveNav);
+        window.addEventListener("hashchange", () => requestAnimationFrame(updateActiveNav));
+        window.addEventListener("load", updateActiveNav);
+        updateActiveNav();
+        requestAnimationFrame(updateActiveNav);
+      })();
+    </script>
     <script type="module" src="./math-renderer.js"></script>
   </body>
 </html>

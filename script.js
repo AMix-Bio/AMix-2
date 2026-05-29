@@ -16,6 +16,17 @@ const copy = {
       "上海人工智能实验室推出的新一代蛋白质大模型，以扩散大语言模型为核心架构，统一建模自然语言、蛋白质序列、蛋白语义理解与功能序列设计。",
     reportButton: "技术报告",
     tryButton: "敬请期待",
+    navContext: "背景",
+    navOverview: "概述",
+    navParadigm: "建模范式",
+    navMethod: "核心方法",
+    navEvaluation: "科学评测",
+    navConclusion: "总结",
+    footerCopyright: "© 2026 上海人工智能实验室 版权所有。",
+    footerContact: "联系",
+    footerGithub: "GitHub",
+    footerReport: "技术报告",
+    footerTop: "回到顶部",
     backgroundLead:
       "2026 年 2 月下旬，Anthropic CEO Dario Amodei 在访谈中预言：<em>大模型的下一个关键战场，将出现在生物科技领域</em>。4 月，Claude Opus 4.7 因生物能力评测表现引发业内关注，OpenAI 也紧随其后推出生物医药推理模型 GPT-Rosalind。短时间内，全球 AI 巨头密集加码生命科学，竞争迅速升温。",
     overviewTitle: "概述",
@@ -82,20 +93,31 @@ const copy = {
       "AMix-2 is a new-generation protein–text foundation model developed by the Shanghai Artificial Intelligence Laboratory, built on diffusion large language models for native protein understanding and design.",
     reportButton: "Technical Report",
     tryButton: "Coming Soon",
+    navContext: "Context",
+    navOverview: "Overview",
+    navParadigm: "Paradigm",
+    navMethod: "Method",
+    navEvaluation: "Evaluation",
+    navConclusion: "Conclusion",
+    footerCopyright: "© 2026 Shanghai Artificial Intelligence Laboratory All rights reserved.",
+    footerContact: "Contact",
+    footerGithub: "GitHub",
+    footerReport: "Technical Report",
+    footerTop: "Back to top",
     backgroundLead:
       "In February 2026, Anthropic CEO Dario Amodei made a bold prediction in an interview: <em>biotechnology is entering a new renaissance, ultimately driven by AI</em>. Just two months later, that forecast already seemed to be coming true. In April, Claude Opus 4.7 drew widespread attention for its strong biological capabilities, and OpenAI soon answered with the release of GPT-Rosalind, its biomedical reasoning model. Almost overnight, global AI giants have heavily escalated their bets on life sciences, pushing the competition into a new phase.",
     overviewTitle: "Overview",
     overviewOne:
-      "AMix-2 is a new-generation protein–text foundation model developed by the Shanghai Artificial Intelligence Laboratory. Built upon <a href=\"https://arxiv.org/abs/2507.08920\" target=\"_blank\" rel=\"noreferrer\">AMix-1</a>—the protein foundation model released in July 2025—and adopting Diffusion Large Language Models (dLLMs) as its core architecture, AMix-2 introduces the protein modality and unifies the modeling of natural language and protein sequences. In doing so, it successfully integrates protein as a native modality into the multimodal cognitive framework of large language models (LLMs), moving them beyond tool invocation toward native protein understanding and design.",
+      "AMix-2 is a new-generation protein–text foundation model developed by the Shanghai Artificial Intelligence Laboratory. Built upon the July 2025 protein foundation model <a href=\"https://arxiv.org/abs/2507.08920\" target=\"_blank\" rel=\"noreferrer\">AMix-1</a> and adopting Diffusion Large Language Models (dLLMs) as its core architecture, AMix-2 introduces the protein modality and unifies the modeling of natural language and protein sequences. In doing so, it successfully integrates protein as a native modality into the multimodal cognitive framework of large language models (LLMs), moving them beyond tool invocation toward native protein understanding and design.",
     overviewTwo:
-      "Following the paradigm of diffusion language models, AMix-2 inherently supports bidirectional contextual understanding, allowing it to fully capture both upstream and downstream dependencies within protein sequences. Local region editing is also supported, enabling precise optimization of functionally critical regions of proteins.",
+      "Following the paradigm of diffusion language models, AMix-2 inherently supports bidirectional contextual understanding, allowing it to fully capture both upstream and downstream dependencies within protein sequences. Local region editing is also supported, enabling fine-grained optimization of functionally critical regions of proteins.",
     overviewThree:
       "Through extensive experiments, our team has demonstrated the superiority of this unified protein-text diffusion language model architecture: across tasks including general protein question answering, hierarchical classification, and functional sequence design, AMix-2 outperforms frontier LLMs and demonstrates competitive performance to task-specific protein language models and specialized bioinformatics tools. In particular, on protein design tasks, AMix-2 substantially surpasses its autoregressive counterpart trained upon the same data, underscoring the effectiveness of the dLLM architecture.",
     dllmCaption:
       "AMix-2 adopts a block-wise diffusion language model architecture to jointly model proteins and text.",
     paradigmTitle: "Modeling Paradigm: Instruction Following Unifies Understanding and Generation",
     paradigmIntro:
-      "AMix-2 builds a unified discrete vocabulary that maps natural language and protein sequences into a shared representation space. Under a single instruction-following objective, the model can handle both protein understanding and protein generation:",
+      "AMix-2 builds a unified discrete vocabulary that maps natural language and protein sequences into a shared representation space. Under a single instruction-following formulation, the model can handle both protein understanding and protein design:",
     understandingLead: "Protein Understanding: ",
     understandingText:
       `given a textual instruction ${inlineMath.xTextInst} and a protein sequence ${inlineMath.xProt}, the model generates a textual answer:`,
@@ -115,7 +137,7 @@ const copy = {
     maskFormula:
       "\\[p_{\\theta}\\!\\left(x_0 \\mid \\tilde{x}_t,\\, x^{(\\lt k)},\\, c\\right)\\]",
     maskMore:
-      "This denoising objective predicts multiple masked positions within a block in a single training step, providing a denser supervision signal than token-by-token autoregression. Moreover, joint prediction compels the model to learn residue compatibility patterns and mutual constraints, implicitly capturing co-evolutionary relationships and exerting a stronger regularizing effect. As a result, the model can generate diverse yet plausible novel sequences even under limited data.",
+      "This denoising objective predicts multiple masked positions within a block in a single training step, providing a denser supervision signal than token-by-token autoregression. Moreover, joint prediction forces the model to learn the co-occurrence patterns of multiple residues under mutual constraints, implicitly capturing co-evolutionary relationships and exerting a stronger regularizing effect. As a result, the model can generate diverse yet plausible novel sequences even under data-constrained settings.",
     blockTitle: "Block-wise Causal Modeling: ",
     blockText:
       "To reduce the combinatorial explosion of the search space while still transmitting global constraints (e.g., given functional descriptions, family features), AMix-2 introduces a causal autoregressive factorization across blocks. This provides a stable sequential prior for conditioning, allowing the model to maintain consistency over long ranges:",
@@ -138,7 +160,7 @@ const copy = {
       "AMix-2 leads mainstream large language models and protein language models across protein understanding and design tasks.",
     takeawayTitle: "Conclusion",
     takeawayText:
-      "Through instruction following, diffusion-based modeling, and  rigorous scientific evaluation, AMix-2 demonstrates that proteins can be incorporated into large language models as a native modality while achieving leading performance. As life science increasingly emerges as a new horizon for LLMs, this technical pathway—combining natural-language instruction with native protein understanding and generation—offers a more unified mode of interaction than specialized models, while avoiding the piecemeal style of understanding inherent in pure tool calling. It is poised to become a new paradigm for protein foundation models that fuses generality with specialization."
+      "Through instruction following, diffusion-based modeling, and  rigorous scientific evaluation, AMix-2 demonstrates that proteins can be incorporated into large language models as a native modality while achieving leading performance. As life science increasingly emerges as a new horizon for LLMs, this technical pathway of combining natural-language instruction with native protein understanding and generation offers a more unified mode of interaction than specialized models, while avoiding the piecemeal style of understanding inherent in pure tool calling. It is poised to become a new paradigm for protein foundation models that fuses generality with specialization."
   }
 };
 
@@ -146,6 +168,10 @@ const localeButtons = document.querySelectorAll(".locale-button");
 const nodes = document.querySelectorAll("[data-i18n]");
 const htmlNodes = document.querySelectorAll("[data-i18n-html]");
 const localizedVisuals = document.querySelectorAll("[data-locale-visual]");
+const navLinks = Array.from(document.querySelectorAll("[data-nav-target]"));
+const navSections = navLinks
+  .map((link) => document.getElementById(link.dataset.navTarget))
+  .filter(Boolean);
 
 function renderMath() {
   if (typeof window.renderTexMath === "function") window.renderTexMath();
@@ -191,4 +217,50 @@ localeButtons.forEach((button) => {
   button.addEventListener("click", () => setLanguage(button.dataset.lang));
 });
 
+function setActiveNav(sectionId) {
+  navLinks.forEach((link) => {
+    const active = link.dataset.navTarget === sectionId;
+    link.classList.toggle("is-active", active);
+    if (active) {
+      link.setAttribute("aria-current", "true");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+}
+
+function updateActiveNav() {
+  if (!navSections.length) return;
+
+  const page = document.documentElement;
+  const distanceFromBottom = page.scrollHeight - (window.scrollY + window.innerHeight);
+  const finalSection = navSections[navSections.length - 1];
+
+  if (
+    distanceFromBottom <= 180 ||
+    finalSection.getBoundingClientRect().top <= window.innerHeight * 0.7
+  ) {
+    setActiveNav(finalSection.id);
+    return;
+  }
+
+  const readingLine = window.innerHeight * 0.38;
+  let activeSection = navSections[0];
+
+  navSections.forEach((section) => {
+    if (section.getBoundingClientRect().top <= readingLine) {
+      activeSection = section;
+    }
+  });
+
+  setActiveNav(activeSection.id);
+}
+
+window.addEventListener("scroll", updateActiveNav, { passive: true });
+window.addEventListener("resize", updateActiveNav);
+window.addEventListener("hashchange", () => requestAnimationFrame(updateActiveNav));
+window.addEventListener("load", updateActiveNav);
+
 setLanguage(localStorage.getItem("amix-2-language") || "zh");
+updateActiveNav();
+requestAnimationFrame(updateActiveNav);
